@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="/js/cart.js"></script>
+    <script src="https://kit.fontawesome.com/845b7f6704.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    
+  
+
+   
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    <nav class="navbar">
+
+       
+        <div  class="nav-container">
+            <div class="logo">
+              <a href="/"> <img height="70px" width="127px" src="/images/logo.jpg" alt="logo"></a> 
+        </div> 
+        <div class="navlist">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/mybooking">My Bookings</a></li>
+                
+              
+              
+                <li><a href="/logout">Signout</a></li>
+               
+            </ul>
+        </div>
+           
+
+        </div>
+    </nav>
+    <% if(traveller!=''){%>
+        <div>
+            <h3 style="margin-left: 30px; margin-top: 30px;">Traveller Details</h3>
+            <%traveller.forEach((travel)=>{%>
+                <div style="width: 50%;  margin-top: 10px; margin-bottom: 20px; display: flex;justify-content: space-between;margin-left: 30px; margin-right: 30px; ">
+                    <div>
+                        <p><%=travel.firstname%></p>
+                    </div>
+                    <div>
+                        <p><%=travel.lastname%></p>
+                    </div>
+                    <div>
+                        <p><%=travel.age%></p>
+                    </div>
+                    <div>
+                        <p><%=travel.age%></p>
+                    </div>
+                    <div>
+                        <p><%=travel.gender%></p>
+                    </div>
+                    <div>
+                       <a href="/deltravel/<%=travel.id%>/<%=flightid%>"><img height="18px" width="18px" src="/images/delete.png" alt=""></a>
+                    </div>
+                </div>
+          <%  })%>
+       
+        
+    </div>
+   <% } else{%>
+
+   <%}%>
+   
+    <div style="margin-top: 30px;" class="card shadow mb-5 bg-white rounded">
+       
+        <!--Card-Body-->
+        <div class="card-body">
+    
+            <!--Card-Title-->
+            <p class="card-title text-center shadow mb-3 rounded">Book Your Flight</p>
+     
+     <div class="icons text-center">
+    
+    <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
+   
+    
+    
+     </div>
+    
+        <hr>
+    
+           <form action="/addtravel" method="post">
+    
+            <!--First Row-->
+            <div class="row">
+                <div class="col-sm-6">
+                <input required type="text" class="form-control mb-4" placeholder="First Name" name="fname" id="">
+            </div>
+    
+                
+            
+            <div class="col-sm-6">
+                <input required type="text"  class="form-control datepicker mb-4" placeholder="Last Name" name="lname" id="">
+            </div>
+    
+                
+            </div>
+           
+           
+    
+            <!--Second Row-->
+           
+    
+            <!--Third Row-->
+            <div class="row">
+    
+                <div class="col-sm-6">
+                    <input required type="Number"  class="form-control datepicker mb-4" placeholder="Age" name="age" id="">
+                </div>
+                
+                <div class="col-sm-6">
+                    <input required type="email"  class="form-control datepicker mb-4" placeholder="Email" name="email" id="">
+                </div>
+                    
+    
+                    </div>
+    <input type="hidden" name="idvalue" value="<%=flightid%>">
+    
+                    <div class="row mt-3">
+    
+                        <label class="radiobtn"><input required type="radio" name="gender" value="Male">Male</label>
+                        <label class="radiobtn"><input required type="radio" name="gender" value="Female">Female</label>
+            
+                    </div>
+                   <div style=" display: flex; float: right;">
+                    <div style="margin-right: 20px; float: right;">
+                    <button style="width: 150px; height: 38px; float: right;" type="submit" class="btn btn-primary float-right mt-5">Add Traveller</button>
+                </div>
+                <%if(traveller!=''){%>
+                    <div style="margin-left: 20px;">
+                        <a aria-disabled="false"  href="/bookflight/<%=flightid%>" class="btn btn-primary float-right mt-5">Book Flight</a>
+                    </div>
+                <%} else{%>
+                    <div style="margin-left: 20px;">
+                        <a style="pointer-events: none;"  href="/bookflight/<%=flightid%>" class="btn btn-primary float-right mt-5">Book Flight</a>
+                    </div>
+                <%}%>
+               
+            </div>
+            </form>
+                </div>
+            </div>
+
+
+    </body>
+    </html>

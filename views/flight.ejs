@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="/js/cart.js"></script>
+    <script src="https://kit.fontawesome.com/845b7f6704.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    
+  
+
+   
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/flight.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    <nav class="navbar">
+
+       
+        <div  class="nav-container">
+            <div class="logo">
+              <a href="/"> <img height="70px" width="127px" src="/images/logo.jpg" alt="logo"></a> 
+        </div> 
+        <div class="navlist">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/mybooking">My Bookings</a></li>
+                
+              
+              
+                <li><a href="/logout">Signout</a></li>
+            </ul>
+        </div>
+           
+
+        </div>
+    </nav>
+   
+       
+   <div style="margin-top: 50px;">
+    <p  class="card-title text-center shadow mb-3 rounded">Flight Details</p>
+
+   </div>
+   <%if(flightdata!==""){%>
+    <div style="margin-top: 50px;">
+        <p  class="card-title text-center shadow mb-3 rounded">No Flight Found</p>
+    
+       </div>
+   <%}%>
+    <div class="total-flight">
+        <%flightdata.forEach((flight)=>{%>
+            <div class="flight-div">
+                <div class="flight-no">
+                    <span><p style="font-size: 20px;"> <%=flight.flightname%></p></span>
+                           </div>
+                
+                <div class="flight-detail">
+                    <div class="fliname">
+                        <span> <p style="font-size: 30px;"><%=flight.airlines%></p></span>
+                  
+                        <span style="margin-right: 30px;"> <a class="btn btn-primary float-right" href="/booking/<%=flight.id%>">Book</a> </span>
+        
+                    </div>
+                   
+                    <div class="flidet">
+                        <div>
+                           <p style="font-size: 30px;"><%=flight.source%></p> </div>
+                        <div><p style="font-size: 20px;"> <i class="fa fa-plane fa-2x" aria-hidden="true"></i></p> </div>
+                        <div><p style="font-size: 30px;"><%=flight.destination%></p> </div>
+                        <div><p style="font-size: 30px;">₹<%=flight.fare%></p> </div>
+                        <div><p style="font-size: 30px;"><%=flight.date%></p> </div>
+                        <div><p style="font-size: 30px;"><%=flight.time%>Hrs</p> </div>
+                    </div>
+                </div>
+            </div>
+        <%})%>
+       
+    </div>
+    </body>
+    </html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="/js/cart.js"></script>
+    <script src="https://kit.fontawesome.com/845b7f6704.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    
+  
+
+   
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    <nav class="navbar">
+
+       
+        <div  class="nav-container">
+            <div class="logo">
+              <a href="/"> <img height="70px" width="127px" src="/images/logo.jpg" alt="logo"></a> 
+        </div> 
+        <div class="navlist">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <%if(currentUser!==""){%>
+                    <li><a href="/mybooking">My Bookings</a></li>
+                    <li><a href="/logout">Signout</a></li>
+                    
+                <%} else {%>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/login"><%=currentUser%></a></li>
+               <% }%>
+              
+               
+               
+            </ul>
+        </div>
+           
+
+        </div>
+    </nav>
+    <section>
+        
+        <div style="margin-top: 30px;" class="card shadow mb-5 bg-white rounded">
+
+            <!--Card-Body-->
+            <div class="card-body">
+        
+                <!--Card-Title-->
+                <p class="card-title text-center shadow mb-3 rounded">Search Flights</p>
+         
+         <div class="icons text-center">
+        
+        <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
+       
+        
+        
+         </div>
+        
+            <hr>
+        
+               
+        
+                <!--First Row-->
+                
+        
+        
+                <!--Second Row-->
+                <form action="/searchflight" method="post">
+                <div class="row">
+        
+                    <div class="col-sm-6">
+                        <select class="browser-default custom-select mb-4" name="source" id="select">
+                <option value="" disabled="" selected="">From City/Airport</option>
+               <%flightS.forEach((flight)=>{%>
+                <option value="<%=flight%>"> <%=flight%>  </option>
+              <% })%>
+            </select>
+                    </div>
+        
+                    <div class="col-sm-6">
+                        <select class="browser-default custom-select mb-4" name="destination" id="select">
+                            <option value="" disabled="" selected="">To City/Airport</option>
+                            <%flightD.forEach((flight)=>{%>
+                                <option value="<%=flight%>"> <%=flight%>  </option>
+                              <% })%>
+            </select>
+                    </div>
+        
+                </div>
+        
+        
+                <!--Third Row-->
+                <div class="row">
+        
+                    <div class="col-sm-6">
+                        
+                        <input placeholder="Departing" type="date" id="date-picker-example" name="date" class="form-control datepicker mb-4" style="font-family:Arial, FontAwesome" >
+                    </div>
+        
+                        
+        
+                        </div>
+        
+        
+                        <div class="row mt-3">
+        
+                            <label class="radiobtn"><input type="radio" name="seatclass" value="Economy">Economy Class</label>
+                            <label class="radiobtn"><input type="radio" name="seatclass" value="Business">Business Class</label>
+                
+                        </div>
+                       
+                            <div style="float: right;">
+                        <button style="width: 130px; float: right;" class="btn btn-primary float-right mt-3" type="submit">Find Flights</button>
+                    </div>
+                    </form>
+                    </div>
+                </div>
+            </section>
+   
+    </body>
+    </html>
+    
+   
