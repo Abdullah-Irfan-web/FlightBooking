@@ -113,7 +113,7 @@ app.get('/',async(req,res)=>{
    if(currentUser===undefined){
    currentUser="";
    }
-   console.log(req.user);
+   
   
    let res1=await AllFlight.find({flightseat: { $gt: 0 } }).distinct("source");
 
